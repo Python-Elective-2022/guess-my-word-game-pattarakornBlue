@@ -49,8 +49,17 @@ def is_word_guessed(secret_word, letters_guessed):
     returns: boolean, True if all the letters of secret_word are in letters_guessed;
       False otherwise
     '''
-    # FILL IN YOUR CODE HERE...
-    pass
+    '''
+    for every letter that is guessed
+     if all letter is not part of secret word
+      return False
+    otherwise return true
+    '''
+    for letter in secret_word:
+        if letter not in letters_guessed:
+          return False
+    return True
+        
 
 
 ### Testcases
@@ -67,8 +76,21 @@ def get_guessed_word(secret_word, letters_guessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secret_word have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE...
-    pass
+    '''
+    for every letter in secret word
+      if letter is in guess letter
+        print the letter
+      if not
+        print _
+    '''
+    word = ""
+    for letter in secret_word:
+      if letter in letters_guessed:
+        word += letter
+      else:
+        word += ' _ '
+    return word
+    
     
     
     
@@ -83,13 +105,28 @@ def get_available_letters(letters_guessed):
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    # FILL IN YOUR CODE HERE...   
-    pass
+    '''
+    for every letter that is guessed
+      remove the letter from the availible letters
+    return letters availible
+    '''
+    import string
+    letter_list = list(string.ascii_lowercase)
+    letter_remain = ""
+    
+
+    for letter in letters_guessed:
+      letter_list.remove(letter)
+    for element in letter_list:
+      letter_remain += element
+    return letter_remain
+
+      
 
 
 
 #Testcases 
-# print( get_available_letters(['e', 'i', 'k', 'p', 'r', 's']) )
+print( get_available_letters(['e', 'i', 'k', 'p', 'r', 's']) )
   
 def game_loop(secret_word):
     '''
